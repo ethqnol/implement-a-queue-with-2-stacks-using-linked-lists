@@ -4,20 +4,20 @@
 #ifndef QUEUE_HH
 #define QUEUE_HH
 
-struct queue {
+template <typename T> struct queue {
         
     private:
-        stack a;
-        stack b;
+        stack<T> a;
+        stack<T> b;
 
     public:
         
-        void enqueue(int data){
+        void enqueue(T data){
             a.push(data);
         }
 
-        int dequeue(){
-            int data;
+        T dequeue(){
+            T data;
             while(a.isEmpty() == false){
                 b.push(a.pop());
             }

@@ -4,22 +4,22 @@
 #ifndef STACK_HH
 #define STACK_HH
 
-struct stack {
+template <typename T>  struct stack {
     private:
-        linkedList a;
+        linkedList<T> a;
     
     public:
-        void push(int data){
-            node* i = new node(data);
+        void push(T data){
+            node<T>* i = new node<T>(data);
             a.insert(i);
         }
 
-        int peak(){
+        T peak(){
             return a.getTop()->data;
         }
 
-        int pop(){
-            node* i = a.getTop();
+        T pop(){
+            node<T>* i = a.getTop();
             a.deletePointer(i);
             return i->data;
         }

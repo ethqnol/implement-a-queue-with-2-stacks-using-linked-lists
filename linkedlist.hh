@@ -3,29 +3,29 @@
 
 #ifndef LINKEDLIST_HH
 #define LINKEDLIST_HH
-struct node {
-    int data;
+template <typename T> struct node {
+    T data;
     node *next;
     node *prev;
 
-    node(int num){
-        data = num;
+    node(T info){
+        data = info;
         next = NULL;
         prev = NULL;
     }
 };
 
 
-struct linkedList {
+template <typename T> struct linkedList {
     private:
-        node *head;
+        node<T> *head;
 
     public:
         linkedList(){
             head = NULL;
         }
 
-        void insert(node *newNode){
+        void insert(node<T> *newNode){
             newNode->next = head;
             if (head != NULL) {
                 head->prev = newNode;
@@ -37,7 +37,7 @@ struct linkedList {
         }
  
         void print(){
-            node *i = head;
+            node<T>* i = head;
         
             if (i == NULL) {
                 std::cout << "Empty" << std::endl;
@@ -49,15 +49,15 @@ struct linkedList {
             }
         }
 
-        node* search(int x){
-            node *i = head;
+        node<T>* search(T x){
+            node<T> *i = head;
             while(i != NULL && i->data != x){
                 i = i->next;
             }
             return i;
         }
 
-        void deletePointer(node* nodePtr){
+        void deletePointer(node<T>* nodePtr){
 
             if(nodePtr->prev != NULL){
                 nodePtr->prev->next = nodePtr->next;
@@ -72,12 +72,12 @@ struct linkedList {
 
         }
 
-        node* getTop(){
+        node<T>* getTop(){
             return head;
         }
 
         int length(){
-            node* i = head;
+            node<T>* i = head;
             int counter = 0;
             while(i != NULL){
                 counter++;
